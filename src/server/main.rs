@@ -1,6 +1,9 @@
-use nix::sys::socket::{
-    accept, bind, listen, recv, send, socket, AddressFamily, Backlog, MsgFlags, SockFlag, SockType,
-    SockaddrIn,
+use nix::{
+    sys::socket::{
+        accept, bind, listen, recv, send, socket, AddressFamily, Backlog, MsgFlags, SockFlag,
+        SockType, SockaddrIn,
+    },
+    unistd::close,
 };
 use std::{os::fd::AsRawFd, str::FromStr};
 
@@ -70,4 +73,13 @@ fn main() {
     //     write(conn_fd, &buf[..bytes_read]).expect("Failted to echo back to the client");
 
     println!("Written {bytes_written} bytes to the client",);
+
+    // we don't actully need to close the those file descriptors manually
+    // In Rust, we do not explicitly use the close method to close sockets because
+    // Rust's ownership and borrowing system automatically handles resource management.
+    // When a socket goes out of scope,
+    // Rust's memory safety guarantees ensure that the socket is properly closed and resources are freed.
+    // This eliminates the need for explicit close calls, reducing the risk of resource leaks and making the code cleaner and safer
+    let _ = close(conn_fd).expect("Failed to close the connection");
+    let _ = close(socket_fd.as_raw_fd()).expect("Failed to close the socket");
 }
