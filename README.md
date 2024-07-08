@@ -62,6 +62,9 @@ how many bytes has been read.
       flags.  With a zero flags argument, recv() is generally
       equivalent to read(2)
 
+5. use [close](https://man7.org/linux/man-pages/man2/close.2.html) to close
+ the socket file descriptor if we need to close the connection.
+
 ## Resource
 
 [Getting Started with Networking and Sockets](https://www.kungfudev.com/blog/2024/06/07/getting-started-with-net-and-sockets)
