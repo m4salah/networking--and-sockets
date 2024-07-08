@@ -1,14 +1,16 @@
 use nix::{
     sys::socket::{
-        accept, bind, listen, recv, send, socket, AddressFamily, Backlog, MsgFlags, SockFlag,
-        SockType, SockaddrIn,
+        accept, bind, listen, recv, send, setsockopt, socket, sockopt, AddressFamily, Backlog,
+        MsgFlags, SockFlag, SockType, SockaddrIn,
     },
-    unistd::close,
+    unistd::{close, getpid},
 };
 use std::{os::fd::AsRawFd, str::FromStr};
 
 /// This is the server
 fn main() {
+    let pid = getpid();
+    println!("Server running on PID {pid}");
     // 1. create the socket file descriptor
     // https://www.man7.org/linux/man-pages/man2/socket.2.html
     let socket_fd = socket(
@@ -25,6 +27,10 @@ fn main() {
     // now we are using INET family which uses IPv4
     let sock_addr =
         SockaddrIn::from_str("127.0.0.1:6797").expect("Failed to create socket address");
+
+    // Set SO_REUSEPORT option to enbale this server run multible instance on the same machine
+    // On the same port.
+    setsockopt(&socket_fd, sockopt::ReusePort, &true).unwrap();
 
     // 3. Bind the socket to the address
     // https://www.man7.org/linux/man-pages/man2/bind.2.html
