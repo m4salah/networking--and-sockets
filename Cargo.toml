@@ -11,5 +11,21 @@ path = "src/server/main.rs"
 name = "client"
 path = "src/client/main.rs"
 
+[[bin]]
+name = "unix-domain-server"
+path = "src/unix-domain/server.rs"
+
+[[bin]]
+name = "unix-domain-client"
+path = "src/unix-domain/client.rs"
+
+[[bin]]
+name = "unix-domain-http-server"
+path = "src/unix-domain/http-server.rs"
+
+[[bin]]
+name = "unix-domain-http-client"
+path = "src/unix-domain/http-client.rs"
+
 [dependencies]
 nix = { version = "0.29.0", features = ["net", "socket"] }
