@@ -1,4 +1,4 @@
-# networking--and-sockets
+# Networking and sockets using rust
 
 just exploring how socket and networking works.
 
