@@ -79,3 +79,4 @@ for example docker uses it but it put http server on top of it.
 ## Resource
 
 [Getting Started with Networking and Sockets](https://www.kungfudev.com/blog/2024/06/07/getting-started-with-net-and-sockets)
+[Understanding Unix Domain Sockets in Golang](https://www.kungfudev.com/blog/2022/12/05/understanding-unix-domain-sockets-in-golang)
