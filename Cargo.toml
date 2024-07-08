@@ -1,0 +1,15 @@
+[package]
+name = "getting-started-with-net-and-sockets"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "server"
+path = "src/server/main.rs"
+
+[[bin]]
+name = "client"
+path = "src/client/main.rs"
+
+[dependencies]
+nix = { version = "0.29.0", features = ["net", "socket"] }
