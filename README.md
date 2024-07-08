@@ -2,11 +2,15 @@
 
 just exploring how socket and networking works.
 
+## Network sockets
+
+Connect two machine on the internet.
+
 ![Socket Flow](/assets/socket-flow.png)
 
 A little explanation from me:
 
-## The Server
+### The Server
 
 1. creates a [socket](https://www.man7.org/linux/man-pages/man2/socket.2.html)
 file descriptor.
@@ -41,7 +45,7 @@ or [write](https://man7.org/linux/man-pages/man2/write.2.html)
 the connection file descriptor if we are done with this connection.
 or close the socket descriptor if we need to close the server.
 
-## The Client
+### The Client
 
 1. creates a [socket](https://www.man7.org/linux/man-pages/man2/socket.2.html)
 file descriptor.
@@ -64,6 +68,13 @@ how many bytes has been read.
 
 5. use [close](https://man7.org/linux/man-pages/man2/close.2.html) to close
  the socket file descriptor if we need to close the connection.
+
+## Unix domain sockets
+
+Connect two process/service on the same machine.
+for example docker uses it but it put http server on top of it.
+
+![Container communcation](/assets/container-com.png)
 
 ## Resource
 
