@@ -73,6 +73,7 @@ how many bytes has been read.
 
 Connect two process/service on the same machine.
 for example docker uses it but it put http server on top of it.
+[docker.sock](https://stackoverflow.com/a/35110344)
 
 ![Container communcation](/assets/container-com.png)
 
