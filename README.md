@@ -41,6 +41,27 @@ or [write](https://man7.org/linux/man-pages/man2/write.2.html)
 the connection file descriptor if we are done with this connection.
 or close the socket descriptor if we need to close the server.
 
+## The Client
+
+1. creates a [socket](https://www.man7.org/linux/man-pages/man2/socket.2.html)
+file descriptor.
+
+2. [connect](https://man7.org/linux/man-pages/man2/connect.2.html) to some
+address using the socket file descriptor.
+
+3. we can write to the server using [send](https://man7.org/linux/man-pages/man2/sendto.2.html)
+or [write](https://man7.org/linux/man-pages/man2/write.2.html)
+    > The only difference between send() and write(2) is the presence of
+      flags. With a zero flags argument, send() is equivalent to
+      write(2).
+
+4. read the data from the server using [recv](https://man7.org/linux/man-pages/man2/recv.2.html)
+or [read](https://man7.org/linux/man-pages/man2/read.2.html) it returns
+how many bytes has been read.
+    > The only difference between recv() and read(s) is the presence of
+      flags.  With a zero flags argument, recv() is generally
+      equivalent to read(2)
+
 ## Resource
 
 [Getting Started with Networking and Sockets](https://www.kungfudev.com/blog/2024/06/07/getting-started-with-net-and-sockets)
