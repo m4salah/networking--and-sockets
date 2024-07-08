@@ -1,5 +1,8 @@
-use nix::sys::socket::{
-    connect, recv, send, socket, AddressFamily, MsgFlags, SockFlag, SockType, SockaddrIn,
+use nix::{
+    sys::socket::{
+        connect, recv, send, socket, AddressFamily, MsgFlags, SockFlag, SockType, SockaddrIn,
+    },
+    unistd::close,
 };
 use std::{os::fd::AsRawFd, str::FromStr};
 
@@ -61,4 +64,8 @@ fn main() {
         &buf[..bytes_read],
         received_data
     );
+
+    // we don't actully need to close the those file descriptors manually
+    // rust will do this for us autoamtically
+    let _ = close(socket_fd.as_raw_fd()).expect("Failed to close the socket");
 }
