@@ -27,5 +27,13 @@ path = "src/unix-domain/http-server.rs"
 name = "unix-domain-http-client"
 path = "src/unix-domain/http-client.rs"
 
+[[bin]]
+name = "tcp-server"
+path = "src/tcp/server.rs"
+
+[[bin]]
+name = "tcp-client"
+path = "src/tcp/client.rs"
+
 [dependencies]
 nix = { version = "0.29.0", features = ["net", "process", "socket"] }
