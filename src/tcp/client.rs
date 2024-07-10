@@ -36,12 +36,14 @@ fn main() -> Result<()> {
     let buffer = std::fs::read("./data.txt")?;
 
     // Send the file size to the server.
+    let file_size_in_bytes = u32::to_be_bytes(buffer.len() as u32);
     send(
         socket_fd.as_raw_fd(),
-        &buffer.len().to_ne_bytes(),
+        &file_size_in_bytes,
         MsgFlags::empty(),
     )?;
     println!("Send the size: {}", buffer.len());
+    println!("Send bytes: {:?}", file_size_in_bytes);
 
     // Send the file to the server.
     send(socket_fd.as_raw_fd(), &buffer, MsgFlags::empty())?;
