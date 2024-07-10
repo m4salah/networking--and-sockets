@@ -35,5 +35,9 @@ path = "src/tcp/server.rs"
 name = "tcp-client"
 path = "src/tcp/client.rs"
 
+[[bin]]
+name = "syn-server"
+path = "src/syn-queue/server.rs"
+
 [dependencies]
-nix = { version = "0.29.0", features = ["net", "process", "socket"] }
+nix = { version = "0.29.0", features = ["net", "process", "socket", "zerocopy"] }
